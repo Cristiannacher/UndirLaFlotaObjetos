@@ -48,33 +48,39 @@ public class Tablero {
 
     }
 
-    public void addBarco(Barco barco, int orientacion, char letra, int y) {
+    public boolean addBarco(Barco barco, int orientacion, char letra, int y) {
         int contador;
         int x = conversor(letra);
+        boolean barcoAdded = false;
 
         if (orientacion == 1) {
+            if (cabeBarco(barco, orientacion, x, y)) {
             if (!hayBarco(x, y, barco.getTamaño(), orientacion)) {
-                if (cabeBarco(barco, orientacion, x, y)) {
+                    barcoAdded = true;
                     contador = x;
                     for (int i = 0; i < barco.getTamaño(); i++) {
                         tablero[contador][y] = 1;
                         contador++;
                     }
-                } else System.out.println("La posicion no es valida");
-            } else System.out.println("Ya hay un barco en esa posicion");
+                } else System.out.println("Ya hay un barco en esa posicion");
+            } else  System.out.println("La posicion no es valida");
         } else {
             if (orientacion == 2) {
+                if (cabeBarco(barco, orientacion, x, y)) {
                 if (!hayBarco(y, x, barco.getTamaño(), orientacion)) {
-                    if (cabeBarco(barco, orientacion, x, y)) {
+                        barcoAdded = true;
                         contador = y;
                         for (int i = 0; i < barco.getTamaño(); i++) {
                             tablero[x][contador] = 1;
                             contador++;
                         }
-                    } else System.out.println("La posicion no es valida");
-                } else System.out.println("Ya hay un barco en esa posicion");
-            } else System.out.println("La oritentacion del barco no es correcta");
+                    } else System.out.println("Ya hay un barco en esa posicion");
+                } else  System.out.println("La posicion no es valida");
+            } else {
+                System.out.println("La oritentacion del barco no es correcta");
+            }
         }
+        return barcoAdded;
     }
 
     private int conversor(char letra) {
