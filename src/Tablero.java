@@ -48,12 +48,56 @@ public class Tablero {
 
     }
 
-    public boolean addBarco(Barco barco, int orientacion, char letra, int y) {
+    public boolean addBarcoVertical(Barco barco, int orientacion, int x, int y) {
         int contador;
+        boolean barcoAdded = false;
+        if (cabeBarco(barco, orientacion, x, y)) {
+            if (!hayBarco(x, y, barco.getTamaño(), orientacion)) {
+                barcoAdded = true;
+                contador = x;
+                for (int i = 0; i < barco.getTamaño(); i++) {
+                    tablero[contador][y] = 1;
+                    contador++;
+                }
+            } else System.out.println("Ya hay un barco en esa posicion");
+        } else System.out.println("La posicion no es valida");
+
+        return barcoAdded;
+    }
+
+    public boolean addBarcoOrizontal(Barco barco, int orientacion, int x, int y) {
+        int contador;
+        boolean barcoAdded = false;
+        if (cabeBarco(barco, orientacion, x, y)) {
+            if (!hayBarco(y, x, barco.getTamaño(), orientacion)) {
+                barcoAdded = true;
+                contador = y;
+                for (int i = 0; i < barco.getTamaño(); i++) {
+                    tablero[x][contador] = 1;
+                    contador++;
+                }
+            } else System.out.println("Ya hay un barco en esa posicion");
+        } else System.out.println("La posicion no es valida");
+        return barcoAdded;
+    }
+
+    public boolean addBarco(Barco barco, int orientacion, char letra, int y) {
         int x = conversor(letra);
         boolean barcoAdded = false;
-
         if (orientacion == 1) {
+            return addBarcoVertical(barco, orientacion, x, y);
+        } else {
+            if (orientacion == 2) {
+                return addBarcoOrizontal(barco, orientacion, x, y);
+            } else {
+                System.out.println("La oritentacion del barco no es correcta");
+                return false;
+            }
+        }
+    }
+
+    /*
+     if (orientacion == 1) {
             if (cabeBarco(barco, orientacion, x, y)) {
             if (!hayBarco(x, y, barco.getTamaño(), orientacion)) {
                     barcoAdded = true;
@@ -82,6 +126,7 @@ public class Tablero {
         }
         return barcoAdded;
     }
+     */
 
     private int conversor(char letra) {
         switch (letra) {
