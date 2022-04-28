@@ -16,7 +16,7 @@ public class Tablero {
         return tablero;
     }
 
-    public boolean hayBarco(int inicio, int fin, int tamaño, int orientacion) {
+    private boolean hayBarco(int inicio, int fin, int tamaño, int orientacion) {
         boolean haybarco = false;
         if (orientacion == 1) {
             for (int i = inicio; i < inicio + (tamaño - 1); i++) {
@@ -36,7 +36,7 @@ public class Tablero {
         return haybarco;
     }
 
-    public boolean cabeBarco(Barco barco, int orientacion, int x, int y) {
+    private boolean cabeBarco(Barco barco, int orientacion, int x, int y) {
         if (orientacion == 1) {
             if (barco.getTamaño() + x > 10) {
                 return false;
@@ -48,7 +48,7 @@ public class Tablero {
 
     }
 
-    public boolean addBarcoVertical(Barco barco, int orientacion, int x, int y) {
+    private boolean addBarcoVertical(Barco barco, int orientacion, int x, int y) {
         int contador;
         boolean barcoAdded = false;
         if (cabeBarco(barco, orientacion, x, y)) {
@@ -65,7 +65,7 @@ public class Tablero {
         return barcoAdded;
     }
 
-    public boolean addBarcoOrizontal(Barco barco, int orientacion, int x, int y) {
+    private boolean addBarcoOrizontal(Barco barco, int orientacion, int x, int y) {
         int contador;
         boolean barcoAdded = false;
         if (cabeBarco(barco, orientacion, x, y)) {
@@ -83,7 +83,6 @@ public class Tablero {
 
     public boolean addBarco(Barco barco, int orientacion, char letra, int y) {
         int x = conversor(letra);
-        boolean barcoAdded = false;
         if (orientacion == 1) {
             return addBarcoVertical(barco, orientacion, x, y);
         } else {
@@ -210,10 +209,10 @@ public class Tablero {
             for (int j = 0; j < tablero[0].length; j++) {
                 switch (tablero[i][j]) {
                     case 0:
-                        System.out.print("♒ ");
+                        System.out.print("W  ");
                         break;
                     case 1:
-                        System.out.print("\uD83D\uDEA4 ");
+                        System.out.print("-  ");
                         break;
                     case 2:
                         System.out.print("✔ ");
