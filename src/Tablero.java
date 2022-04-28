@@ -19,14 +19,14 @@ public class Tablero {
     private boolean hayBarco(int inicio, int fin, int tamaño, int orientacion) {
         boolean haybarco = false;
         if (orientacion == 1) {
-            for (int i = inicio; i < inicio + (tamaño - 1); i++) {
+            for (int i = inicio; i < inicio + (tamaño); i++) {
                 if (tablero[i][fin] == 1) {
                     haybarco = true;
                     break;
                 }
             }
         } else {
-            for (int i = inicio; i < inicio + (tamaño - 1); i++) {
+            for (int i = inicio; i < inicio + (tamaño); i++) {
                 if (tablero[fin][i] == 1) {
                     haybarco = true;
                     break;
