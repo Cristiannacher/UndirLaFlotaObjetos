@@ -6,6 +6,7 @@ public class Main {
         Scanner reader = new Scanner(System.in);
 
         System.out.println("VAMOS A JUGAR A hUNDIR LA FLOTA\n");
+
         System.out.println("Jugador 1 elija su nombre");
         Jugador jugador1 = new Jugador(reader.next());
         System.out.println(jugador1.getNombre() + " coloque sus barcos\n");
@@ -37,8 +38,8 @@ public class Main {
         jugador2.getTableroBarcos().toString();
 
         System.out.println("\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ");
-
         System.out.println("VAMOS HA EMPEZAR LA PARTIDA\n");
+
         for (int i = 0; i < 15; i++) {
             System.out.println(jugador1.getNombre() + " es tu turno\n");
             jugador2.getTableroVacio().toString();
@@ -52,7 +53,7 @@ public class Main {
             System.out.println("PUNTUACION: " + jugador1.getPuntuacion());
             System.out.println("DISPAROS: " + jugador1.getDisparos());
 
-            System.out.println("\n \n");
+            System.out.println("\n");
 
             System.out.println(jugador2.getNombre() + " es tu turno\n");
             jugador1.getTableroVacio().toString();
@@ -66,7 +67,7 @@ public class Main {
             System.out.println("PUNTUACION: " + jugador2.getPuntuacion());
             System.out.println("DISPAROS: " + jugador2.getDisparos());
 
-            System.out.println("\n \n");
+            System.out.println("\n");
         }
     }
 }
