@@ -1,13 +1,10 @@
 import Barcos.*;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Jugador {
     private String nombre;
     private int puntuacion;
-    private Tablero tablero = new Tablero(10,10);
+    private Tablero tableroBarcos = new Tablero(10,10);
+    private Tablero tableroVacio = new Tablero (10,10);
     private Barco barco1 = new Portaaviones();
     private Barco barco2 = new Acorazado();
     private Barco barco3 = new Submarino();
@@ -26,8 +23,12 @@ public class Jugador {
         return barcos;
     }
 
-    public Tablero getTablero() {
-        return tablero;
+    public Tablero getTableroBarcos() {
+        return tableroBarcos;
+    }
+
+    public Tablero getTableroVacio() {
+        return tableroVacio;
     }
 
     private int conversor(char letra) {
@@ -56,16 +57,19 @@ public class Jugador {
         return 0;
     }
 
-    public boolean disparar(char letra, int columna) {
+    public boolean disparar(Tablero tableroBarcos, Tablero tableroVacio, char letra, int columna) {
         int fila = conversor(letra);
-        boolean undido = false;
-        if (tablero.getTablero()[fila][columna] != 2 && tablero.getTablero()[fila][columna] != 3) {
-            if (tablero.getTablero()[fila][columna] == 1) {
-                tablero.getTablero()[fila][columna] = 2;
-                undido = true;
-            } else tablero.getTablero()[fila][columna] = 3;
+        boolean hundido = false;
+        if (tableroBarcos.getTablero()[fila][columna] != 2 && tableroBarcos.getTablero()[fila][columna] != 3) {
+            if (tableroBarcos.getTablero()[fila][columna] == 1) {
+                tableroBarcos.getTablero()[fila][columna] = 2;
+                tableroVacio.getTablero()[fila][columna] = 2;
+                hundido = true;
+            } else {
+                tableroBarcos.getTablero()[fila][columna] = 3;
+                tableroVacio.getTablero()[fila][columna] = 3;}
         }
-        return undido;
+        return hundido;
     }
 
 

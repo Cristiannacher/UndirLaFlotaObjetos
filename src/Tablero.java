@@ -1,5 +1,7 @@
 import Barcos.Barco;
 
+import java.util.Arrays;
+
 public class Tablero {
     private int filas;
     private int columans;
@@ -89,43 +91,11 @@ public class Tablero {
             if (orientacion == 2) {
                 return addBarcoOrizontal(barco, orientacion, x, y);
             } else {
-                System.out.println("La oritentacion del barco no es correcta");
+                System.out.println("La horitentacion del barco no es correcta");
                 return false;
             }
         }
     }
-
-    /*
-     if (orientacion == 1) {
-            if (cabeBarco(barco, orientacion, x, y)) {
-            if (!hayBarco(x, y, barco.getTamaño(), orientacion)) {
-                    barcoAdded = true;
-                    contador = x;
-                    for (int i = 0; i < barco.getTamaño(); i++) {
-                        tablero[contador][y] = 1;
-                        contador++;
-                    }
-                } else System.out.println("Ya hay un barco en esa posicion");
-            } else  System.out.println("La posicion no es valida");
-        } else {
-            if (orientacion == 2) {
-                if (cabeBarco(barco, orientacion, x, y)) {
-                if (!hayBarco(y, x, barco.getTamaño(), orientacion)) {
-                        barcoAdded = true;
-                        contador = y;
-                        for (int i = 0; i < barco.getTamaño(); i++) {
-                            tablero[x][contador] = 1;
-                            contador++;
-                        }
-                    } else System.out.println("Ya hay un barco en esa posicion");
-                } else  System.out.println("La posicion no es valida");
-            } else {
-                System.out.println("La oritentacion del barco no es correcta");
-            }
-        }
-        return barcoAdded;
-    }
-     */
 
     private int conversor(char letra) {
         switch (letra) {
@@ -165,7 +135,9 @@ public class Tablero {
         return undido;
     }*/
 
-    public void imprimir() {
+
+    @Override
+    public String toString() {
         for (int i = 0; i < columans + 1; i++) {
             if (i == 0) {
                 System.out.print("  ");
@@ -225,6 +197,6 @@ public class Tablero {
             System.out.println();
         }
         System.out.println();
+        return null;
     }
-
 }
