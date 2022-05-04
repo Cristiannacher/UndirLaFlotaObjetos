@@ -123,19 +123,6 @@ public class Tablero {
         return 0;
     }
 
-   /* public boolean disparaTablero(char letra, int columna) {
-        int fila = conversor(letra);
-        boolean undido = false;
-        if (tablero[fila][columna] != 2 && tablero[fila][columna] != 3) {
-            if (tablero[fila][columna] == 1) {
-                tablero[fila][columna] = 2;
-                undido = true;
-            } else tablero[fila][columna] = 3;
-        }
-        return undido;
-    }*/
-
-
     @Override
     public String toString() {
         for (int i = 0; i < columans + 1; i++) {
@@ -187,10 +174,10 @@ public class Tablero {
                         System.out.print("-  ");
                         break;
                     case 2:
-                        System.out.print("✔ ");
+                        System.out.print("O  ");
                         break;
                     case 3:
-                        System.out.print("✖ ");
+                        System.out.print("X  ");
                         break;
                 }
             }

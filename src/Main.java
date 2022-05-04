@@ -39,15 +39,34 @@ public class Main {
         System.out.println("\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ");
 
         System.out.println("VAMOS HA EMPEZAR LA PARTIDA\n");
+        for (int i = 0; i < 15; i++) {
+            System.out.println(jugador1.getNombre() + " es tu turno\n");
+            jugador2.getTableroVacio().toString();
+            System.out.println("Cordenadas letra + numero");
+            char letra = reader.next().charAt(0);
+            int y = reader.nextInt()-1;
+            if (jugador1.disparar(jugador2.getTableroBarcos(), jugador2.getTableroVacio(), letra, y))
+                System.out.println("HAS DADO EN EL BLANCO!!");
+            else System.out.println("DISPARO FALLIDO!!");
+            jugador2.getTableroVacio().toString();
+            System.out.println("PUNTUACION: " + jugador1.getPuntuacion());
+            System.out.println("DISPAROS: " + jugador1.getDisparos());
 
-        System.out.println(jugador1.getNombre()+" dispara\n");
-        jugador2.getTableroVacio().toString();
-        System.out.println("Cordenadas letra + numero\n");
-        char letra = reader.next().charAt(0);
-        int y = reader.nextInt();
-        jugador1.disparar(jugador2.getTableroBarcos(), jugador2.getTableroVacio(), letra,y);
-        jugador2.getTableroVacio().toString();
+            System.out.println("\n \n");
 
+            System.out.println(jugador2.getNombre() + " es tu turno\n");
+            jugador1.getTableroVacio().toString();
+            System.out.println("Cordenadas letra + numero");
+            char letra2 = reader.next().charAt(0);
+            int y2 = reader.nextInt()-1;
+            if (jugador2.disparar(jugador1.getTableroBarcos(), jugador1.getTableroVacio(), letra2, y2))
+                System.out.println("HAS DADO EN EL BLANCO!!");
+            else System.out.println("DISPARO FALLIDO!!");
+            jugador1.getTableroVacio().toString();
+            System.out.println("PUNTUACION: " + jugador2.getPuntuacion());
+            System.out.println("DISPAROS: " + jugador2.getDisparos());
 
+            System.out.println("\n \n");
+        }
     }
 }
